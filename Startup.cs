@@ -31,8 +31,9 @@ namespace BookStore
         {
 
            // using Microsoft.EntityFrameworkCore;
-           services.AddEntityFrameworkNpgsql().AddDbContext<BookStoreContext>( 
-               option => option.UseNpgsql(Configuration.GetConnectionString("BookStoreDb"))
+           services.AddDbContext<BookStoreContext>( 
+               option=> option.UseNpgsql(Configuration.GetConnectionString("BookStoreDb"))
+              
             );
                        
             services.AddControllers();
