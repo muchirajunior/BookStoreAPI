@@ -1,19 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookStore.Models;
 using BookStore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookStore
 {
@@ -33,7 +26,6 @@ namespace BookStore
            // using Microsoft.EntityFrameworkCore;
            services.AddDbContext<BookStoreContext>( 
                option=> option.UseNpgsql(Configuration.GetConnectionString("BookStoreDb"))
-              
             );
                        
             services.AddControllers();
