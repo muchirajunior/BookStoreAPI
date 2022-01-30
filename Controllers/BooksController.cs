@@ -25,7 +25,7 @@ namespace BookStore.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBook( [FromRoute]int id){
             var book = await _bookService.GetBook(id);
-            if (book == null) { return NotFound(); }
+            if (book == null) { return NotFound(new Message("no such book in the records")); }
 
             return Ok(book);
         }
@@ -36,6 +36,33 @@ namespace BookStore.Controllers
 
             return Created("",newbook);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBook([FromRoute]int id, [FromBody]Book book ){
+            try{
+                var newbook= await _bookService.UpdateBook(id,book);
+
+                return Ok(book);
+            }
+            catch(System.Exception){
+                return NotFound(new Message("failed to update, no such item"));
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBook(int id){
+            try
+            {
+                await _bookService.DeleteBook(id);
+
+                return Ok(new Message("deleted successfuly"));
+            }
+            catch (System.Exception){
+                return NotFound(new Message("failed to delete, no such item"));
+            }
+        }
+
+
 
     }
 }

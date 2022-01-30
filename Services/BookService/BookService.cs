@@ -29,5 +29,26 @@ namespace BookStore.Services{
 
             return book;
         }
+
+        public async Task<dynamic> UpdateBook(int id, Book book){
+            var newbook= new Book(){
+                id=id, 
+                title=book.title, 
+                description=book.description
+            };
+
+             _context.books.Update(newbook);
+            await _context.SaveChangesAsync();
+
+            return newbook;
+
+        }
+
+        public async Task DeleteBook(int id){
+            var book= new Book(){ id=id};
+
+            _context.Remove(book);
+            await _context.SaveChangesAsync();
+        }
     }
 }
