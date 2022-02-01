@@ -3,4 +3,3 @@ CREATE TABLE books (
     title VARCHAR(200) NOT NULL,
     description VARCHAR(1000) 
 );
-
