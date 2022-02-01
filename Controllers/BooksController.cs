@@ -1,7 +1,6 @@
 using BookStore.Models;
 using BookStore.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
@@ -42,7 +41,7 @@ namespace BookStore.Controllers
             try{
                 var newbook= await _bookService.UpdateBook(id,book);
 
-                return Ok(book);
+                return Ok(newbook);
             }
             catch(System.Exception){
                 return NotFound(new Message("failed to update, no such item"));
@@ -61,7 +60,6 @@ namespace BookStore.Controllers
                 return NotFound(new Message("failed to delete, no such item"));
             }
         }
-
 
 
     }
