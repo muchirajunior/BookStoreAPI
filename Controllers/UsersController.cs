@@ -22,6 +22,26 @@ namespace BookStore.Controllers{
             return Ok(users);
         }
 
+        [HttpPost("")]
+        public async Task<IActionResult> CreateUser([FromBody]User user){
+            var usr = await _userService.RegisterUser(user);
+
+            return Created("",usr);
+        }
+
+        [HttpGet("{username}/{password}")]
+        public async Task<IActionResult> LoginUser([FromRoute]string username, [FromRoute]string password){
+            var result= await _userService.LoginUser(username,password);
+            return Ok(result);
+        }
+
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> DeleteUser([FromRoute]string username){
+            var result = await _userService.DeleteUser(username);
+
+            return Ok(result);
+        }
+
         
     }
 }
