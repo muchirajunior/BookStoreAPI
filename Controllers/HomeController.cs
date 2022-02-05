@@ -12,5 +12,10 @@ namespace BookStore.Controllers{
         public IActionResult Index(){
             return Ok(new Message("api running successfully"));
         }
+
+        [HttpGet("404")]
+        public IActionResult NotFoundRoute(){
+            return NotFound(new Message("route does not exist"));
+        } 
     }
 }
