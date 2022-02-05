@@ -1,5 +1,6 @@
 using BookStore.Models;
 using BookStore.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -37,6 +38,7 @@ namespace BookStore.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateBook([FromRoute]int id, [FromBody]Book book ){
             try{
                 var newbook= await _bookService.UpdateBook(id,book);
@@ -49,6 +51,7 @@ namespace BookStore.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteBook(int id){
             try
             {
