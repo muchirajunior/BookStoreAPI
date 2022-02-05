@@ -37,7 +37,14 @@ namespace BookStore.Controllers{
             return Ok(result);
         }
 
+        [HttpPut("")]
+        public IActionResult EditUser(){
+
+            return NotFound(new {message = "service unavailable", data ="no content" });
+        }
+
         [HttpDelete("{username}")]
+        [Authorize]
         public async Task<IActionResult> DeleteUser([FromRoute]string username){
             var result = await _userService.DeleteUser(username);
 

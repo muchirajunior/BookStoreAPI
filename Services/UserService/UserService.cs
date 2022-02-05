@@ -39,7 +39,7 @@ namespace BookStore.Services{
 
             if (user != null){
                 var passCheck = new PasswordHasher<object>().VerifyHashedPassword(null, user.password, password);
-               return ((int)passCheck)== 1 ? new Message("suceesfull login"){data=new UserInfo(user, GenerateJSONWebToken(user))} : new Message("invalid password");
+               return ((int)passCheck)== 1 ? new { msg = "successful logn", data = user, token= GenerateJSONWebToken(user) } : new Message("invalid password");
             }
             else return new Message("invalid user");
         }
