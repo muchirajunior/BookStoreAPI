@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text;
 using BookStore.Models;
 using BookStore.Services;
@@ -77,6 +78,9 @@ namespace BookStore
             {
                 endpoints.MapControllers();
             });
+
+            app.UseStatusCodePagesWithRedirects("404");
+
         }
     }
 }
