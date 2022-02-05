@@ -1,11 +1,14 @@
+using System.Text;
 using BookStore.Models;
 using BookStore.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace BookStore
@@ -27,6 +30,20 @@ namespace BookStore
            services.AddDbContext<BookStoreContext>( 
                option=> option.UseNpgsql(Configuration.GetConnectionString("BookStoreDb"))
             );
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(option => {
+                option.TokenValidationParameters = new TokenValidationParameters(){
+                    ValidateIssuer = true,    
+                    ValidateAudience = true,    
+                    ValidateLifetime = true,    
+                    ValidateIssuerSigningKey = true,    
+                    ValidIssuer = Configuration["Jwt:validIssuer"],    
+                    ValidAudience = Configuration["Jwt:ValidAudience"],    
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:secretKey"]))
+                };
+            }); 
+           
                        
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -51,6 +68,8 @@ namespace BookStore
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication( );
 
             app.UseAuthorization();
 

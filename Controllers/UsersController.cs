@@ -1,5 +1,6 @@
 using BookStore.Models;
 using BookStore.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace BookStore.Controllers{
         public UsersController(IUserService userService) => _userService=userService;
 
         [HttpGet("")]
+        [Authorize]
         public async Task<IActionResult> GetUsers(){
             var users = await _userService.GetUsers();
             
