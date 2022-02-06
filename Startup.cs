@@ -1,4 +1,3 @@
-using System.Net;
 using System.Text;
 using BookStore.Models;
 using BookStore.Services;
@@ -35,7 +34,7 @@ namespace BookStore
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(option => {
                 option.TokenValidationParameters = new TokenValidationParameters(){
-                    ValidateIssuer = true, //set it to false if you want often change dormain names    
+                    ValidateIssuer = false, //set it to false if you want often change dormain names    
                     ValidateAudience = true,    
                     ValidateLifetime = true,    
                     ValidateIssuerSigningKey = true,    
