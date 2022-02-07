@@ -1,6 +1,6 @@
 ## BookStore API
 -----------------
-- books store API is a https://asp.net api using C# programming language 
+- books store API is a asp.net api using C# programming language 
 - the API utilizes all CRUD operations for the Books that is adding, get a book, update and delete
 
 - the API also has users operations that is register , login and delete
@@ -12,14 +12,14 @@
 - /books :GET: The endpoint gets all the books in the record :lemon:
 - /books :POST: The endpoint create a book  takes book json {title:"",description:""}, :key: requires jwt auth :pineapple:
 - /books/id :UPDATE: The endpoint updates a book takes a json {title:"",description:""}, :key: requires jwt auth :pear:
-- /delete/id :DELETE: The endpoint deletes a book from records, :key: requires jwt auth :apple:
+- /books/id :DELETE: The endpoint deletes a book from records, :key: requires jwt auth :apple:
 
 ### Users Endpoints :office_worker:
 --------------------
-- /users :GET: The endpoint gets all users, requires jwt auth :lemon:
+- /users :GET: The endpoint gets all users, :key: requires jwt auth :lemon:
 - /users :POST: Registers a new user, takes a json object {name:"",username:"",password:"",email:""} :pineapple:
 - /users/login :POST: The endpoint login an new user and genrates a jwt token for user  :pineapple:
-- /users :UPDATE: Edit user information, not fully implimented,requires jwt auth :key:  :sob: :hot_face:
+- /users :UPDATE: Edit user information, not fully implimented,:key: requires jwt auth  :sob: :hot_face:
 - /users :DELETE: The endpoint  deletes a user from the records, :key: requires jwt auth   :apple:
 
 ### code info :computer:
