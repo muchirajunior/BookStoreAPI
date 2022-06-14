@@ -20,7 +20,7 @@
 - /users :GET: The endpoint gets all users, :key: requires jwt auth {with admin role} :lemon:
 - /users :POST: Registers a new user, takes a json object {name:"",username:"",password:"",email:""} :pineapple:
 - /users/login :POST: The endpoint login an new user and genrates a jwt token for user  :pineapple:
-- /users :UPDATE: Edit user information, not fully implimented,:key: requires jwt auth  :sob: :hot_face:
+- /users :UPDATE: Edit user information, not fully implimented,:key: requires jwt auth 
 - /users :DELETE: The endpoint  deletes a user from the records, :key: requires jwt auth   :apple:
 
 ### code info :computer:
